@@ -53,3 +53,16 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
+.idea/
+bower.json
+config.xml
+gulpfile.js
+hooks/
+ionic.config.json
+node_modules/
+package.json
+platforms/
+plugins/
+resources/
+scss/
+www/
