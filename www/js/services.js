@@ -1,47 +1,52 @@
 angular.module('starter.services', [])
 
-.factory('Chats', function() {
+.factory('Profiles', function() {
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
-  var chats = [{
+  var profiles = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'img/ben.png'
+    name: 'Anoop Kumar',
+    deseg: 'Team Lead',
+    face: 'img/150x165/anoop-kumar.png'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'img/max.png'
+    name: 'Vijay Kumar',
+    deseg: 'Project Manager',
+    face: 'img/150x165/vijay-kumar.png'
   }, {
     id: 2,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'img/adam.jpg'
+	name: 'Durgesh Soni',
+	deseg: 'Team Lead',
+    face: 'img/150x165/durgesh-soni.png'
   }, {
     id: 3,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'img/perry.png'
+	 name: 'Manish Mittal',
+    deseg: 'Project Manager',
+    face: 'img/150x165/manish-mittal.png'
   }, {
     id: 4,
-    name: 'Mike Harrington',
-    lastText: 'This is wicked good ice cream.',
-    face: 'img/mike.png'
+	name: 'Vinay Kumar',
+	deseg: 'UI Designer',
+    face: 'img/150x165/vinay-kumar.png'
+  }, {
+    id: 5,
+	name: 'Ankit Gera',
+	deseg: 'System Administrator',
+    face: 'img/150x165/ankit-gera.png'
   }];
 
   return {
     all: function() {
-      return chats;
+      return profiles;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(id) {
+      profiles.splice(profiles.indexOf(id), 1);
     },
-    get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+    get: function(profileId) {
+      for (var i = 0; i < profiles.length; i++) {
+        if (profiles[i].id === parseInt(profileId)) {
+          return profiles[i];
         }
       }
       return null;

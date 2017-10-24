@@ -1,36 +1,54 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout,  $location, $ionicPopup) {
 
-.controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
   // listen for the $ionicView.enter event:
-  //
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+  // Form data for the login modal
+  $scope.loginData = {};
+
+  //--------------------------------------------
+   $scope.login = function(user) {
+			
+		if(typeof(user)=='undefined'){
+			$scope.showAlert('Please fill username and password to proceed.');	
+			return false;
+		}
+
+		if(user.username=='demo@gmail.com' && user.password=='demo'){
+			$location.path('/app/dashboard');
+		}else{
+			$scope.showAlert('Invalid username or password.');	
+		}
+		
+	};
+  //--------------------------------------------
+  $scope.logout = function() {   $location.path('/app/login');   };
+  //--------------------------------------------
+   // An alert dialog
+	 $scope.showAlert = function(msg) {
+	   var alertPopup = $ionicPopup.alert({
+		 title: 'Warning Message',
+		 template: msg
+	   });
+	 };
+  //--------------------------------------------
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('ProfilesCtrl', function($scope , Profiles) {
+    $scope.profiles = Profiles.all();
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: false
-  };
-  $scope.list = [
-    { id: 1, title: 'Titre 1'},
-    { id: 2, title: 'Titre 2'},
-    { id: 3, title: 'Titre 3'},
-    { id: 4, title: 'Titre 4'},
-    { id: 5, title: 'Titre 5'},
-    { id: 6, title: 'Titre 6'}
-  ];
+.controller('ProfileCtrl', function($scope, $stateParams , Profiles) {
+	$scope.profile = Profiles.get($stateParams.profileId);
+})
+
+.controller('DashCtrl', function($scope, $stateParams , Profiles) {
+	$scope.profiles = Profiles.all();
 });
+
